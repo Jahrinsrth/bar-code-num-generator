@@ -1,33 +1,59 @@
 
-<div class="container" style="padding-top: 10px;">
+<!-- <div class="container" style="padding-top: 10px;">
   <h2> Bar code Number Generator</h2>
+</div> -->
+<div class="container" style="padding-top: 10px;">
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-text" style="padding-left: 5px; font-size: large;font-weight: bold;">
+      Sample Barcode Number Generator
+    </span>
+  </nav>
+
 </div>
+
 
 <div  style="padding-top: 40px;">
   <div class="container">
 <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)" class="form-horizontal">
   <div class="form-group">
-    <label for="name" style="padding-bottom: 10px;">Starting Number</label>
+    <label for="name" style="padding-bottom: 10px;font-weight: bold;">Starting Number</label>
     <input type="text" id="startingNum" name="startingNum" class="form-control" ngModel required>
   </div>
 
   <div class="form-group">
-    <label for="email" style="padding-top: 10px;padding-bottom: 10px;">Number Gap</label>
+    <label for="email" style="padding-top: 10px;padding-bottom: 10px;font-weight: bold;">Number Gap</label>
     <input type="text" id="gap" name="gap" class="form-control" ngModel required>
   </div>
 
-   <div style="padding-top: 20px;">
-    <button type="submit" class="btn btn-primary" >Generate</button>
-   </div>
-  
+   <div style="display: flex; gap: 10px;padding-top: 20px;font-weight: bold;">
+    <button type="submit" class="btn btn-primary">Generate</button>
+    <button (click)="exportToExcel(result, 'sample_barcode_data')" class="btn btn-success" [disabled]="isButtonDisabled">Export to Excel</button>
+    <button type="reset" class="btn btn-warning" (click)="reset()">Reset</button>
+</div>
+
 </form>
 </div>
+
+<!-- <div style="padding-top: 20px;">
+  <button (click)="exportToExcel(result, 'sample_barcode_data')"  class="btn btn-success" [disabled]="isButtonDisabled">Export to Excel</button>
+ </div> -->
   
-<div>
+<!-- <div>
   <ul *ngFor="let res of result">
-     <li> {{res}}</li>
+     <li id="listData"> {{res}}</li>
   </ul>
-</div>
+</div> -->
+
+<table id="excel-table"  hidden="true">
+  <tr>
+    <th>Sample BarCode Numbers</th>
+
+  </tr>
+  <tr  *ngFor="let res of result">
+    <td>{{res}}</td>
+  </tr>
+
+</table>
 
 
 </div>
