@@ -17,11 +17,19 @@
   </div>
 
    <div style="padding-top: 20px;">
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" >Generate</button>
    </div>
   
 </form>
 </div>
+  
+<div>
+  <ul *ngFor="let res of result">
+     <li> {{res}}</li>
+  </ul>
+</div>
+
+
 </div>
 
 
